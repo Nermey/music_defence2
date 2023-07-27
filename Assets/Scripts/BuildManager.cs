@@ -4,7 +4,10 @@ public class BuildManager : MonoBehaviour
 {
     public static BuildManager instance;
 
-    public GameObject standartTowerPrefab;
+    public GameObject GuitarTower;
+    public GameObject DrummerTower;
+    public GameObject KeyboardTower;
+    public GameObject DjTower;
 
     private GameObject towerToBuild;
 
@@ -19,12 +22,12 @@ public class BuildManager : MonoBehaviour
         instance = this;
     }
 
-    void Start()
+
+    public void SetTowerToBuild(GameObject tower)
     {
-        towerToBuild = standartTowerPrefab;
+        towerToBuild = tower;
     }
 
-    
 
     public GameObject GetTowerToBuild () 
     { 
