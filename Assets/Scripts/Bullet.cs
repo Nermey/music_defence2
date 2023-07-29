@@ -5,6 +5,7 @@ public class Bullet : MonoBehaviour
     private Transform target;
 
     public float speed = 20f; // скорость снаряда
+    public float explotionRadius = 0f; // радиус поражения
 
     public void Seek(Transform _target)
     {
@@ -28,13 +29,26 @@ public class Bullet : MonoBehaviour
         }
 
         transform.Translate(dir.normalized * distanceThisFrame, Space.World);
-       // transform.LookAt(target);
+        transform.LookAt(target);
     }
 
     void HitTarget()
     {
-        Destroy(target.gameObject); // уничтожение врага (временно)
+        
         Destroy(gameObject);
 
+        if (explotionRadius > 0f) 
+        {
+            
+        }
+        else
+        {
+            Destroy(target);
+        }
+    }
+
+    void Damage(Transform enemy)
+    {
+        Destroy(enemy.gameObject); // уничтожение врага (временно)
     }
 }

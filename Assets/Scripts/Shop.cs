@@ -2,6 +2,12 @@ using UnityEngine;
 
 public class Shop : MonoBehaviour
 {
+    public TowerBlueprint guitarTower;
+    public TowerBlueprint drummerTower;
+    public TowerBlueprint keyboardTower;
+    public TowerBlueprint djTower;
+
+
     BuildManager buildManager;
 
     void Start()
@@ -9,27 +15,27 @@ public class Shop : MonoBehaviour
         buildManager = BuildManager.instance;
     }
 
-    public void PurchaseGuitarTower()
+    public void SelectGuitarTower()
     {
         Debug.Log("guitar tower");
-        buildManager.SetTowerToBuild(buildManager.GuitarTower);
+        buildManager.SelectTowerToBuild(guitarTower);
     }
     
-    public void PurchaseDrummerTower()
+    public void SelectDrummerTower()
     {
         Debug.Log("drummer tower");
-        buildManager.SetTowerToBuild(buildManager.DrummerTower);
+        buildManager.SelectTowerToBuild(drummerTower);
     }
 
-    public void PurchaseKeyboardTower()
+    public void SelectKeyboardTower()
     {
         Debug.Log("keyboard tower");
-        buildManager.SetTowerToBuild(buildManager.KeyboardTower);
+        buildManager.SelectTowerToBuild(keyboardTower);
     }
 
-    public void PurchaseDjTower()
+    public void SelectDjTower()
     {
         Debug.Log("dj tower");
-        buildManager.SetTowerToBuild(buildManager.DjTower);
+        buildManager.SelectTowerToBuild(djTower);
     }
 }

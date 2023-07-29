@@ -4,11 +4,13 @@ using UnityEngine;
 public class Stage : MonoBehaviour
 {
     public Color hoverColor;
+    public Vector3 positionOffset;
 
     private Renderer rend;
     private Color startColor;
 
-    private GameObject tower;
+    [Header("Optional")]
+    public GameObject tower;
 
     BuildManager buildManager;
 
@@ -19,9 +21,14 @@ public class Stage : MonoBehaviour
         buildManager = BuildManager.instance;
     }
 
+    public Vector3 GetBuildPosition()
+    {
+        return transform.position + positionOffset;
+    }
+
     void OnMouseDown()
     {
-        if (buildManager.GetTowerToBuild() == null)
+        if (!buildManager.CanBuild)
         {
             return;
         }
@@ -31,14 +38,12 @@ public class Stage : MonoBehaviour
             Debug.Log("Tut zanyato!!!");
             return;
         }
-
-        GameObject towerToBuild = buildManager.GetTowerToBuild();
-        tower = (GameObject)Instantiate(towerToBuild, transform.position, transform.rotation);
+        buildManager.BuildTowerOn(this);
     }
 
     void OnMouseEnter()
     {
-        if (buildManager.GetTowerToBuild() == null)
+        if (!buildManager.CanBuild)
         {
             return;
         }

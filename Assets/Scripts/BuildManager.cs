@@ -9,8 +9,15 @@ public class BuildManager : MonoBehaviour
     public GameObject KeyboardTower;
     public GameObject DjTower;
 
-    private GameObject towerToBuild;
+    private TowerBlueprint towerToBuild;
 
+    public bool CanBuild 
+    {
+        get
+        { 
+            return towerToBuild != null; 
+        }
+    }
 
     void Awake()
     {
@@ -22,15 +29,23 @@ public class BuildManager : MonoBehaviour
         instance = this;
     }
 
-
-    public void SetTowerToBuild(GameObject tower)
+    public void BuildTowerOn(Stage stage)
     {
-        towerToBuild = tower;
+        if (PlayerStats.Money < towerToBuild.cost)
+        {
+            Debug.Log("Копи бичара :)");
+            return;
+        }
+
+        PlayerStats.Money -= towerToBuild.cost;
+        GameObject tower = (GameObject) Instantiate(towerToBuild.prefab, stage.GetBuildPosition(), Quaternion.identity);
+        stage.tower = tower;
+
+        Debug.Log("tower is builded! Money: " + PlayerStats.Money);
     }
 
-
-    public GameObject GetTowerToBuild () 
-    { 
-        return towerToBuild;
-    }   
+    public void SelectTowerToBuild(TowerBlueprint tower)
+    {
+        towerToBuild = tower;
+    }  
 }
