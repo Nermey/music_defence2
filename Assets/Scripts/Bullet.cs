@@ -34,21 +34,38 @@ public class Bullet : MonoBehaviour
 
     void HitTarget()
     {
-        
-        Destroy(gameObject);
-
         if (explotionRadius > 0f) 
         {
-            
+            Explode();
         }
         else
         {
-            Destroy(target);
+            Damage(target);
+        }
+        Destroy(gameObject);
+    }
+
+    void Explode()
+    {
+        Collider[] colliders = Physics.OverlapSphere(transform.position, explotionRadius);
+        Debug.Log(colliders.Length);
+        foreach (Collider collider in colliders)
+        {
+            if (collider.tag == "Enemy")
+            {
+                Damage(collider.transform);
+            }
         }
     }
 
     void Damage(Transform enemy)
     {
         Destroy(enemy.gameObject); // уничтожение врага (временно)
+    }
+
+    void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.yellow;
+        Gizmos.DrawWireSphere(transform.position, explotionRadius);
     }
 }
