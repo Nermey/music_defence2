@@ -23,7 +23,16 @@ public class WaveSpawner : MonoBehaviour
 
         countdown -= Time.deltaTime; // счетчик уменьшается каждые 2f (2с) на 1
 
-        waveCountdownText.text = "Next wave: " + Mathf.Round(countdown).ToString();
+        countdown = Mathf.Clamp(countdown, 0f, Mathf.Infinity);
+        if (Mathf.Round(countdown) <= 10f)
+        {
+            waveCountdownText.text = "Next wave: " + string.Format("{0:00.00}", countdown);
+        }
+        else
+        {
+            waveCountdownText.text = "";
+        }
+        
     }
 
     IEnumerator SpawnWave () // IENumerator позволяет поставить код на паузу при выполнении

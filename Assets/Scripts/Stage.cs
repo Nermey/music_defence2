@@ -4,6 +4,7 @@ using UnityEngine;
 public class Stage : MonoBehaviour
 {
     public Color hoverColor;
+    public Color notMoneyColor;
     public Vector3 positionOffset;
 
     private Renderer rend;
@@ -47,8 +48,14 @@ public class Stage : MonoBehaviour
         {
             return;
         }
-
-        rend.material.color = hoverColor;
+        if (buildManager.HasMoney)
+        {
+            rend.material.color = hoverColor;
+        }
+        else
+        {
+            rend.material.color = notMoneyColor;
+        }
     }
 
     void OnMouseExit()

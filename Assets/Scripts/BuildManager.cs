@@ -19,6 +19,14 @@ public class BuildManager : MonoBehaviour
         }
     }
 
+    public bool HasMoney
+    {
+        get
+        {
+            return PlayerStats.Money >= towerToBuild.cost;
+        }
+    }
+
     void Awake()
     {
         if (instance != null)
