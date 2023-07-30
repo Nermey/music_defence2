@@ -7,6 +7,8 @@ public class Bullet : MonoBehaviour
     public float speed = 20f; // скорость снаряда
     public float explotionRadius = 0f; // радиус поражения
 
+    public int damage = 50;
+
     public void Seek(Transform _target)
     {
         target = _target;
@@ -60,7 +62,12 @@ public class Bullet : MonoBehaviour
 
     void Damage(Transform enemy)
     {
-        Destroy(enemy.gameObject); // уничтожение врага (временно)
+        Enemy e = enemy.GetComponent<Enemy>();
+
+        if (e != null)
+        {
+            e.TakeDamage(damage);
+        }
     }
 
     void OnDrawGizmosSelected()
