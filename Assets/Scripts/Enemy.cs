@@ -5,7 +5,7 @@ public class Enemy : MonoBehaviour
 {
     public float speed = 3f;
     public int health = 30;
-    public int award = 20;
+    public int reward = 20;
 
     private Transform target;
     private int waypointIndex = 0;
@@ -27,7 +27,7 @@ public class Enemy : MonoBehaviour
 
     void Death()
     {
-        PlayerStats.Money += award;
+        PlayerStats.Money += reward;
         Destroy(gameObject);
     }
 
