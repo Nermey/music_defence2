@@ -10,6 +10,9 @@ public class BuildManager : MonoBehaviour
     public GameObject DjTower;
 
     private TowerBlueprint towerToBuild;
+    private Stage selectedStage;
+
+    public StageUI stageUI;
 
     public bool CanBuild 
     {
@@ -52,8 +55,30 @@ public class BuildManager : MonoBehaviour
         Debug.Log("tower is builded! Money: " + PlayerStats.Money);
     }
 
+    public void SelectStage(Stage stage)
+    {
+        if (selectedStage == stage)
+        {
+            DeselectStage();
+            return;
+        }
+
+        selectedStage = stage;
+        towerToBuild = null;
+
+        stageUI.SetTarget(stage);
+    }
+
+    public void DeselectStage()
+    {
+        selectedStage = null;
+        stageUI.Hide();
+    }
+
     public void SelectTowerToBuild(TowerBlueprint tower)
     {
         towerToBuild = tower;
+
+        DeselectStage();
     }  
 }

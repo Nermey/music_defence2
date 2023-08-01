@@ -28,17 +28,19 @@ public class Stage : MonoBehaviour
     }
 
     void OnMouseDown()
-    {
+    {  
+
+        if (tower != null)
+        {
+            buildManager.SelectStage(this);
+            return;
+        }
         if (!buildManager.CanBuild)
         {
             return;
         }
 
-        if (tower != null)
-        {
-            Debug.Log("Tut zanyato!!!");
-            return;
-        }
+        
         buildManager.BuildTowerOn(this);
     }
 
