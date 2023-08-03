@@ -48,9 +48,17 @@ public class Enemy : MonoBehaviour
         {
             GetNextWaypoint();
         }
+        if (health/startHealth <= .5f)
+        {
+            healthBar.color = Color.yellow;
+        }
+        if (health / startHealth <= .2f)
+        {
+            healthBar.color = Color.red;
+        }
         if (GameManager.gameIsOver)
         {
-            Destroy(gameObject); // qwe
+            Destroy(gameObject);
         }
     }
 
