@@ -48,6 +48,10 @@ public class Enemy : MonoBehaviour
         {
             GetNextWaypoint();
         }
+        if (GameManager.gameIsOver)
+        {
+            Destroy(gameObject); // qwe
+        }
     }
 
     void GetNextWaypoint ()
