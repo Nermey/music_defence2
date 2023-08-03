@@ -40,21 +40,6 @@ public class BuildManager : MonoBehaviour
         instance = this;
     }
 
-    public void BuildTowerOn(Stage stage)
-    {
-        if (PlayerStats.Money < towerToBuild.cost)
-        {
-            Debug.Log("Копи бичара :)");
-            return;
-        }
-
-        PlayerStats.Money -= towerToBuild.cost;
-        GameObject tower = (GameObject) Instantiate(towerToBuild.prefab, stage.GetBuildPosition(), Quaternion.identity);
-        stage.tower = tower;
-
-        Debug.Log("tower is builded! Money: " + PlayerStats.Money);
-    }
-
     public void SelectStage(Stage stage)
     {
         if (selectedStage == stage)
@@ -80,5 +65,10 @@ public class BuildManager : MonoBehaviour
         towerToBuild = tower;
 
         DeselectStage();
-    }  
+    }
+
+    public TowerBlueprint GetTowerToBuild()
+    {
+        return towerToBuild;
+    }
 }

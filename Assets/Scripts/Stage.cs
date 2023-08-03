@@ -1,5 +1,7 @@
 using Unity.VisualScripting;
+using UnityEditor.SceneManagement;
 using UnityEngine;
+using static UnityEngine.GraphicsBuffer;
 
 public class Stage : MonoBehaviour
 {
@@ -10,8 +12,11 @@ public class Stage : MonoBehaviour
     private Renderer rend;
     private Color startColor;
 
-    [Header("Optional")]
-    public GameObject tower;
+    [HideInInspector]
+    public TowerBlueprint towerBlueprint;
+
+    [HideInInspector]
+    public GameObject tower; 
 
     BuildManager buildManager;
 
@@ -27,6 +32,15 @@ public class Stage : MonoBehaviour
         return transform.position + positionOffset;
     }
 
+    public void SellTower()
+    {
+        Debug.Log("cost: " +  towerBlueprint.GetSellAmount());
+        PlayerStats.Money += towerBlueprint.GetSellAmount();
+
+        Destroy(tower);
+       towerBlueprint = null;
+    }
+
     void OnMouseDown()
     {  
 
@@ -40,8 +54,24 @@ public class Stage : MonoBehaviour
             return;
         }
 
-        
-        buildManager.BuildTowerOn(this);
+
+        BuildTower(buildManager.GetTowerToBuild());
+    }
+
+    void BuildTower(TowerBlueprint blueprint)
+    {
+        if (PlayerStats.Money < blueprint.cost)
+        {
+            return;
+        }
+
+        PlayerStats.Money -= blueprint.cost;
+
+
+        GameObject _tower = (GameObject)Instantiate(blueprint.prefab, GetBuildPosition(), Quaternion.identity);
+        tower = _tower;
+
+        towerBlueprint = blueprint;
     }
 
     void OnMouseEnter()
@@ -62,6 +92,6 @@ public class Stage : MonoBehaviour
 
     void OnMouseExit()
     {
-        rend.material.color =startColor;
+        rend.material.color = startColor;
     }
 }

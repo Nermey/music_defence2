@@ -8,4 +8,10 @@ public class TowerBlueprint
     public GameObject prefab;
     public int cost;
 
+
+    public int GetSellAmount()
+    
+    {
+        return cost / 2;
+    }
 }
