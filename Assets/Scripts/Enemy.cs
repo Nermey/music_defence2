@@ -10,6 +10,8 @@ public class Enemy : MonoBehaviour
 
     public int reward = 20;
 
+    Animator animator;
+
     private Transform target;
     private int waypointIndex = 0;
 
@@ -19,6 +21,7 @@ public class Enemy : MonoBehaviour
     {
         target = Waypoints.points[0];
         health = startHealth;
+        animator = GetComponent<Animator>();
     }
 
     public void TakeDamage(int amount)
@@ -29,7 +32,8 @@ public class Enemy : MonoBehaviour
 
         if (health <= 0)
         {
-            Death();
+            animator.SetTrigger("didDie");
+            Invoke("Death", 0.405f); // если не нравится как долго проигрывается анимация исправь время
         }
     }
 

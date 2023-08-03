@@ -56,8 +56,8 @@ public class WaveSpawner : MonoBehaviour
         }
     }
 
-    void SpawnEnemy ()
+    void SpawnEnemy () // принимать индекс 
     {
-        Instantiate(enemyPrefab[0], spawnPoint.position, spawnPoint.rotation); // пока только спавн рэпера
+        Instantiate(enemyPrefab[2], spawnPoint.position, spawnPoint.rotation); // пока только спавн рэпера
     }
 }
