@@ -4,8 +4,9 @@ using UnityEngine.UI;
 
 public class Enemy : MonoBehaviour
 {
-    public float speed = 3f;
+    public float speed = 1f;
     public int startHealth = 30;
+    public string enemyType;
     private float health;
 
     public int reward = 20;
@@ -29,6 +30,11 @@ public class Enemy : MonoBehaviour
         health -= amount;
 
         healthBar.fillAmount = health / startHealth;
+
+        if (health < startHealth && enemyType == "Raper") 
+        {
+            speed = 2.5f; // изменить если слишком быстро бежит
+        }
 
         if (health <= 0)
         {

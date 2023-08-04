@@ -304,8 +304,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 936399c6052350c4a9751771cdcba0bc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 1
+  startSpeed: 3
   startHealth: 40
+  enemyType: Punk
   reward: 20
   healthBar: {fileID: 696644920547436230}
 --- !u!135 &6000470828528559193
