@@ -1,3 +1,4 @@
+using System.Collections;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
@@ -18,10 +19,11 @@ public class Enemy : MonoBehaviour
 
     public Image healthBar;
 
-    void Start ()
+    void Start()
     {
         target = Waypoints.points[0];
         health = startHealth;
+        healthBar.color = Color.green;
         animator = GetComponent<Animator>();
     }
 
@@ -31,22 +33,42 @@ public class Enemy : MonoBehaviour
 
         healthBar.fillAmount = health / startHealth;
 
-        if (health < startHealth && enemyType == "Raper") 
+
+        if ((health / startHealth) <= .2f && enemyType == "Raper")
         {
             speed = 2.5f; // изменить если слишком быстро бежит
         }
 
         if (health <= 0)
         {
-            animator.SetTrigger("didDie");
-            Invoke("Death", 0.405f); // если не нравится как долго проигрывается анимация исправь время
+            Death();
         }
     }
 
     void Death()
     {
+        int chanceOfRevival = Random.Range(1, 101);
+        if (enemyType != "Zombie")
+        {
+            DestroyEnemy();
+        }
+        if (chanceOfRevival <= 5) // шанс воскрешения зомби
+        {
+            health = startHealth;
+            healthBar.fillAmount = health / startHealth;
+            animator.SetTrigger("revival");
+        }
+        else
+        {
+            DestroyEnemy();
+        }
+    }
+
+    void DestroyEnemy()
+    {
         PlayerStats.Money += reward;
-        Destroy(gameObject);
+        animator.SetTrigger("didDie");
+        Destroy(gameObject, 0.405f); // если не нравится как долго проигрывается анимация исправь время (удаление объекта)
     }
 
     void Update ()
@@ -58,14 +80,22 @@ public class Enemy : MonoBehaviour
         {
             GetNextWaypoint();
         }
+
+        if (health / startHealth > 0.5f)
+        {
+            healthBar.color = Color.green;
+        }
+
         if (health/startHealth <= .5f)
         {
             healthBar.color = Color.yellow;
         }
+
         if (health / startHealth <= .2f)
         {
             healthBar.color = Color.red;
         }
+
         if (GameManager.gameIsOver)
         {
             Destroy(gameObject);
