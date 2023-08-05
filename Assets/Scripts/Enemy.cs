@@ -10,6 +10,8 @@ public class Enemy : MonoBehaviour
     public string enemyType;
     private float health;
 
+    private bool repeat = false;
+
     public int reward = 20;
 
     Animator animator;
@@ -52,15 +54,17 @@ public class Enemy : MonoBehaviour
         {
             DestroyEnemy();
         }
-        if (chanceOfRevival <= 5) // шанс воскрешения зомби
+        if (!repeat && chanceOfRevival <= 5) // шанс воскрешения зомби
         {
             health = startHealth;
             healthBar.fillAmount = health / startHealth;
             animator.SetTrigger("revival");
+            repeat = true;
         }
         else
         {
             DestroyEnemy();
+            repeat = false;
         }
     }
 
