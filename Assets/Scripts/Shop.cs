@@ -17,25 +17,21 @@ public class Shop : MonoBehaviour
 
     public void SelectGuitarTower()
     {
-        Debug.Log("guitar tower");
         buildManager.SelectTowerToBuild(guitarTower);
     }
     
     public void SelectDrummerTower()
     {
-        Debug.Log("drummer tower");
         buildManager.SelectTowerToBuild(drummerTower);
     }
 
     public void SelectKeyboardTower()
     {
-        Debug.Log("keyboard tower");
         buildManager.SelectTowerToBuild(keyboardTower);
     }
 
     public void SelectDjTower()
     {
-        Debug.Log("dj tower");
         buildManager.SelectTowerToBuild(djTower);
     }
 }

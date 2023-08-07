@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 60310869044746471}
   m_Layer: 0
   m_Name: KeyboardTower
-  m_TagString: Untagged
+  m_TagString: Attack
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -99,9 +99,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   range: 15
-  fireRate: 10
-  enemyTag: Enemy
   bulletPrefab: {fileID: 7062857249559892817, guid: b2d7cd042bb89ca4984b2635c84f04bb, type: 3}
+  fireRate: 10
+  useLaser: 0
+  enemyTag: Enemy
   firePoint: {fileID: 4492904796108300669}
 --- !u!1 &6921218645332895295
 GameObject:

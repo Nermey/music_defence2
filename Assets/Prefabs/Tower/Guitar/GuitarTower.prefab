@@ -44,7 +44,7 @@ GameObject:
   - component: {fileID: 3164807055155438471}
   m_Layer: 0
   m_Name: GuitarTower
-  m_TagString: Untagged
+  m_TagString: Attack
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -130,7 +130,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   range: 4
-  fireRate: 1
-  enemyTag: Enemy
   bulletPrefab: {fileID: 2221370558533375852, guid: b14697b0df91cdf4e98e884433a860fb, type: 3}
+  fireRate: 1
+  useLaser: 0
+  enemyTag: Enemy
   firePoint: {fileID: 5984082089802114897}

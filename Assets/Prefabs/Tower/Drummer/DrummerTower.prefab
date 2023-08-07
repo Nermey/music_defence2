@@ -44,7 +44,7 @@ GameObject:
   - component: {fileID: 2514456441659274161}
   m_Layer: 0
   m_Name: DrummerTower
-  m_TagString: Untagged
+  m_TagString: Attack
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -130,7 +130,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   range: 6.4
-  fireRate: 0.3
-  enemyTag: Enemy
   bulletPrefab: {fileID: 2515532761886195957, guid: 024a906fda9be3545810fd3bd2967123, type: 3}
+  fireRate: 0.3
+  useLaser: 0
+  enemyTag: Enemy
   firePoint: {fileID: 3961707381219826369}

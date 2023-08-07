@@ -19,6 +19,7 @@ public class Stage : MonoBehaviour
     public GameObject tower; 
 
     BuildManager buildManager;
+    Tower stopSupport;
 
     private void Start()
     {
@@ -34,9 +35,19 @@ public class Stage : MonoBehaviour
 
     public void SellTower()
     {
-        Debug.Log("cost: " +  towerBlueprint.GetSellAmount());
         PlayerStats.Money += towerBlueprint.GetSellAmount();
+        if (tower.tag == "Support")
+        {
+            GameObject[] towers = GameObject.FindGameObjectsWithTag("Attack");
+            foreach (GameObject tower in towers)
+            {
+                GameObject sTower = tower.gameObject;
+                Tower stopSupport = sTower.GetComponent<Tower>();
+                stopSupport.StopSupport();
+            }
 
+            
+        }
         Destroy(tower);
        towerBlueprint = null;
     }

@@ -11,9 +11,10 @@ GameObject:
   - component: {fileID: 1489401971445824958}
   - component: {fileID: 770809666953178987}
   - component: {fileID: 5831000252181662766}
+  - component: {fileID: 7052219694416998959}
   m_Layer: 0
   m_Name: DjTower
-  m_TagString: Untagged
+  m_TagString: Support
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -32,7 +33,7 @@ Transform:
   m_Children:
   - {fileID: 3407367435829769029}
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &770809666953178987
 SpriteRenderer:
@@ -98,11 +99,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6952153b67aea31478d7d2cefb71b546, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  range: 3.3
-  fireRate: 10
-  enemyTag: Enemy
+  range: 8
   bulletPrefab: {fileID: 3970721078560592498, guid: a6d0f554ef0f2fa42b409a1cc01a6106, type: 3}
+  fireRate: 2.27
+  enemyTag: Enemy
   firePoint: {fileID: 3407367435829769029}
+--- !u!114 &7052219694416998959
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5872239219717806070}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7a97fff3d6db7f4da126d3f482bf479, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  percentOfGain: 0
+  towerTag: Attack
+  range: 8
+  gainPercent: 0.05
 --- !u!1 &6534308428221128853
 GameObject:
   m_ObjectHideFlags: 0

@@ -7,7 +7,8 @@ public class Bullet : MonoBehaviour
     public float speed = 20f; // скорость снаряда
     public float explotionRadius = 0f; // радиус поражения
 
-    public int damage = 50;
+    public int damage;
+
 
     public void Seek(Transform _target)
     {
@@ -21,6 +22,7 @@ public class Bullet : MonoBehaviour
             Destroy(gameObject);
             return;
         }
+
         Vector3 dir = target.position - transform.position;
         float distanceThisFrame = Time.deltaTime * speed;
 
@@ -61,7 +63,6 @@ public class Bullet : MonoBehaviour
     void Damage(Transform enemy)
     {
         Enemy e = enemy.GetComponent<Enemy>();
-
         if (e != null)
         {
             e.TakeDamage(damage);

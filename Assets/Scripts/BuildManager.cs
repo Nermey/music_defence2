@@ -4,11 +4,6 @@ public class BuildManager : MonoBehaviour
 {
     public static BuildManager instance;
 
-    public GameObject GuitarTower;
-    public GameObject DrummerTower;
-    public GameObject KeyboardTower;
-    public GameObject DjTower;
-
     private TowerBlueprint towerToBuild;
     private Stage selectedStage;
 
@@ -34,7 +29,6 @@ public class BuildManager : MonoBehaviour
     {
         if (instance != null)
         {
-            Debug.LogError("More than one buildManager!");
             return;
         }
         instance = this;
